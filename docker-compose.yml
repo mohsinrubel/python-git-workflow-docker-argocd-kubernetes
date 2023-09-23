@@ -1,0 +1,25 @@
+version: '3'
+services:
+  todo-list:
+    build: .
+    image:  todo-list
+    container_name: todo-list
+    restart: always
+    working_dir: /app
+
+    volumes:
+      - .:/app
+    ports:
+      - "3000:8000"
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+    external: true
+#Volumes
+volumes:
+  dbdata:
+    driver: local
