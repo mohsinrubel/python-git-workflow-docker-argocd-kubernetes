@@ -74,7 +74,7 @@ jobs:
           cd k8s
           git config --global user.email "mohsinrubel.devops@gmail.com"
           git config --global user.name "mohsinrubel"
-          sed -i "s#${{ github.actor }}.*#${{ github.actor }}/test-argocd:${{ github.sha }}#g" deployment.yaml
+          sed -i "s#${{ github.actor }}.*#${{ github.actor }}/todo-list:${{ github.sha }}#g" k8s/deployment.yaml
           git status
           git add *
           
