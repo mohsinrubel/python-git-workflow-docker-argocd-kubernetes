@@ -74,7 +74,7 @@ jobs:
        run: |
           git config --global user.email "mohsinrubel.devops@gmail.com"
           git config --global user.name "mohsinrubel"
-          sed -i "s#${{ github.actor }}.*#${{ github.actor }}/todo-list:${{ github.sha }}#g" k8s/deployment.yaml
+          sed -i "s#${{ github.actor }}.*#${{ github.actor }}/todo-list:${{ github.sha }}#g" k8s/deployment.yml
           git status
           git add *
           git commit -m "Update image tag to v${{ github.run_number }}"
