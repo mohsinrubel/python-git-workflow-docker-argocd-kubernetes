@@ -87,7 +87,8 @@ jobs:
        run: echo "IMAGE_TAG=v${{ github.run_number }}" >> $GITHUB_ENV
 
      - name: Update Kubernetes YAML
-       run: sed -i "s|\${IMAGE_TAG}|${IMAGE_TAG}|g" development/deployment.yml
+      #  run: sed -i "s|\${IMAGE_TAG}|${IMAGE_TAG}|g" development/deployment.yml
+       run: sed "s|{{IMAGE_TAG}}|${IMAGE_TAG}|g" template/deployment.yml.tem  >  development/deployment.yml
 
 
 
