@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: todo-list
-          image: shihab24/gitops01
+          image: shihab24/test-argocd:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
