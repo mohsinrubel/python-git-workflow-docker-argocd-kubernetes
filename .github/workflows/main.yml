@@ -66,13 +66,19 @@ jobs:
     steps:
      - name: Checkout code
        uses: actions/checkout@v2
-       
+
      - name: Login to Github Packages
        uses: docker/login-action@v2
        with:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.G_TOKEN }}
+
+     - uses: actions/checkout@v3
+       with:
+         repository: deepchainlabs/gitops-infra
+         ref: 'main'
+         token: ${{ secrets.G_TOKEN }}
 
      - name: Set image tag in values.yaml
        run: echo "imageTag:${{ github.sha }}" > k8s/values.yaml
