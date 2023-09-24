@@ -83,6 +83,14 @@ jobs:
      - name: Set image tag in values.yaml
        run: echo "imageTag:v${{ github.run_number }}" > values.yml
 
+     - name: Set image tag
+       run: echo "IMAGE_TAG=v${{ github.run_number }}" >> $GITHUB_ENV
+
+     - name: Update Kubernetes YAML
+       run: sed -i "s|\${IMAGE_TAG}|${IMAGE_TAG}|g" development/deployment.yml
+
+
+
      - name: setup git config
        run: |
           git config --global user.email "mohsinrubel.devops@gmail.com"
