@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: todo-list
-          image: shihab24/todo-list:af54afa7744021d8f426c8d5be8515f0b1280486
+          image: shihab24/todo-list:{{ .Values.imageTag }}
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
