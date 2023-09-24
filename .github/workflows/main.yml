@@ -76,12 +76,12 @@ jobs:
 
      - uses: actions/checkout@v3
        with:
-         repository: mohsinrubel/python-git-workflow-docker-argocd-kubernetes
-         ref: 'mfest'
+         repository: mohsinrubel/argo-gitops-infra-1
+         ref: 'main'
          token: ${{ secrets.G_TOKEN }}
 
      - name: Set image tag in values.yaml
-       run: echo "imageTag:v${{ github.run_number }}" > k8s/values.yaml
+       run: echo "imageTag:v${{ github.run_number }}" > values.yml
 
      - name: setup git config
        run: |
@@ -90,4 +90,4 @@ jobs:
           git add *
           git commit -m "Update image tag to v${{ github.run_number }}"
      - run: echo ${{ github }}
-     - run: git push origin mfest
+     - run: git push origin main
