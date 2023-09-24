@@ -52,8 +52,8 @@ jobs:
           context: ./
           # Note: tags has to be all lower-case
           tags: |
-            shihab24/todo-list:${{ github.sha }} 
-            ghcr.io/mohsinrubel/python-git-workflow-docker-argocd-kubernetes:${{ github.sha }}
+            shihab24/todo-list:v${{  github.run_number }} 
+            ghcr.io/mohsinrubel/python-git-workflow-docker-argocd-kubernetes:${{  github.run_number }}
           # build on feature branches, push only on master branch
           push: ${{ github.ref == 'refs/heads/master' }}
 
@@ -81,14 +81,12 @@ jobs:
          token: ${{ secrets.G_TOKEN }}
 
      - name: Set image tag in values.yaml
-       run: echo "imageTag:${{ github.sha }}" > k8s/values.yaml
+       run: echo "imageTag:v${{ github.run_number }}" > k8s/values.yaml
 
      - name: setup git config
        run: |
           git config --global user.email "mohsinrubel.devops@gmail.com"
           git config --global user.name "mohsinrubel"
-          sed -i "s#${{ github.actor }}.*#${{ github.actor }}/todo-list:${{ github.sha }}#g" k8s/deployment.yml
-          git status
           git add *
           git commit -m "Update image tag to v${{ github.run_number }}"
      - run: echo ${{ github }}
