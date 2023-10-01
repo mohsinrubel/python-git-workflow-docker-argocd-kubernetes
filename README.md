@@ -1,4 +1,5 @@
 # python-git-workflow-docker-argocd-kubernetes
+![Alt text](https://github.com/mohsinrubel/python-git-workflow-docker-argocd-kubernetes/blob/master/Screenshot%20from%202023-09-27%2021-54-12.png)
 this project implement gitops system
 ✅ Project Title: Deploying Dockerized App on Kubernetes using ArgoCD and GitOps methodology with Github Actions
 
